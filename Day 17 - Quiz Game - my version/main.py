@@ -10,3 +10,4 @@ while power:
         play_again = input(f"Wrong input, try again ")
     if play_again == "n":
         power = False
+        print("Bye!")

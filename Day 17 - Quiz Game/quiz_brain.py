@@ -17,7 +17,7 @@ class QuizBrain:
             print("Correct!")
             self.score += 1
         print(f"Score is: {self.score}/{self.question_number}")
-        #sync test
+        #sync testasd
 
 
     def check_answer(self, player_answer, correct_answer):

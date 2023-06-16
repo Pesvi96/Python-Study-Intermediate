@@ -9,19 +9,17 @@ class QuizBrain:
 
     def next_question(self):
         current_question = self.questions_list[self.question_number]
-        correct_answer = current_question.answer
         self.question_number += 1
-        player_answer = input(f"Q{self.question_number}: {current_question.text}")
+        player_answer = input(f"Q{self.question_number}: {current_question.text} ")
 
-        if self.check_answer(player_answer, correct_answer):
+        if self.check_answer(player_answer, current_question.answer):
             print("Correct!")
             self.score += 1
-        print(f"Score is: {self.score}/{self.question_number}")
-        #sync testasd
+        print(f"Score is: {self.score}/{self.question_number}\n")
 
 
     def check_answer(self, player_answer, correct_answer):
-        return player_answer == correct_answer
+        return player_answer.lower() == correct_answer.lower()
 
 
 

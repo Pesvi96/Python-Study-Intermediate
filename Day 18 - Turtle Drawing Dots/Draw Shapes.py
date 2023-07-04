@@ -6,6 +6,7 @@ bobby = Turtle()
 bobby.shape("turtle")
 bobby.fillcolor("DarkRed")
 screen = Screen()
+bobby.speed(0)
 
 
 def random_pencolor():

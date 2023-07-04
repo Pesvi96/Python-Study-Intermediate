@@ -1,5 +1,3 @@
-# ufro sqeli xazebi, random mimartulebit 10 stepi,  aachqare ku,
-
 from turtle import Turtle, Screen
 from random import random, choice
 
@@ -19,11 +17,11 @@ def random_pencolor():
     g = random()
     b = random()
     color = (r, g, b)
-    bobby.pencolor(color)
+    return color
 
 
 def draw_shape():
-    random_pencolor()
+    bobby.pencolor(random_pencolor())
     bobby.setheading(choice(destinations))
     bobby.fd(25)
 

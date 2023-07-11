@@ -12,23 +12,26 @@ class Snake:
 
     def __init__(self):
         self.snake = []
-        self.create_snake()
+        for position in STARTING_POSITIONS:
+            self.create_snake(position)
         self.head = self.snake[0]
 
-    def create_snake(self):
-        for position in STARTING_POSITIONS:
-            tail_part = Turtle("square")
-            tail_part.color("white")
-            tail_part.penup()
-            tail_part.speed(1)
-            tail_part.goto(position)
-            self.snake.append(tail_part)
+    def create_snake(self, position):
+        tail_part = Turtle("square")
+        tail_part.color("white")
+        tail_part.penup()
+        tail_part.speed(1)
+        tail_part.goto(position)
+        self.snake.append(tail_part)
 
     def move(self):
         for tail_part in range(len(self.snake) - 1, 0, -1):
             next_loc = self.snake[tail_part - 1].pos()
             self.snake[tail_part].goto(next_loc)
         self.head.forward(MOVE_DISTANCE)
+
+    def extend(self):
+        self.create_snake(self.snake[-1].pos())
 
     def up(self):
         if self.head.heading() != DOWN:
@@ -49,3 +52,33 @@ class Snake:
     def check_distance(self, object):
         if self.head.distance(object) < 10:
             return True
+
+    @staticmethod
+    def show_grids():
+        grid = Turtle()
+        grid.penup()
+        grid.goto(-300, -300)
+        grid.color("red")
+        grid.ht()
+        grid.pendown()
+
+        # x coordinates
+        for _ in range(15):
+            grid.setheading(90)
+            grid.forward(600)
+            grid.setheading(0)
+            grid.forward(20)
+            grid.setheading(270)
+            grid.forward(600)
+            grid.setheading(0)
+            grid.forward(20)
+
+        for _ in range(15):
+            grid.setheading(180)
+            grid.forward(600)
+            grid.setheading(90)
+            grid.forward(20)
+            grid.setheading(0)
+            grid.forward(600)
+            grid.setheading(90)
+            grid.forward(20)

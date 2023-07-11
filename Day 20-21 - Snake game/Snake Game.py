@@ -1,11 +1,14 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 import time
 
+x = 600
+y = 600
+
 screen = Screen()
-screen.setup(width=600, height=600)
+screen.setup(width=x, height=y)
 screen.bgcolor("black")
 screen.title("The Best Snake Game")
 screen.tracer(0)
@@ -32,19 +35,17 @@ while game_on:
     if snake.check_distance(food):
         food.new_food()
         scoreboard.add_score()
+        snake.extend()
 
-    # Detect collision with wall
-    if abs(snake.head.xcor()) > 280 or abs(snake.head.ycor()) > 280:
-        scoreboard.game_over()
-        game_on = False
-
-    # Detect collision with tail. ეგრევე გეიმ ოვერს ჩითავს, რ
-    # ამენაირად უნდა შევცვალო რო დალაგების მერე გაჩითოს,
-    # და ახალი ნაწილების დამატებისასაც არ ჩათვალოს რო დაეჯახა
-    for tail_part in snake.snake:
-        if snake.head.pos() == tail_part.pos():
+    # Detect collision with tail
+    for tail_part in snake.snake[1:]:
+        if snake.check_distance(tail_part):
             scoreboard.game_over()
             game_on = False
 
+    # Detect collision with wall
+    if abs(snake.head.xcor()) > 300 or abs(snake.head.ycor()) > 300:
+        scoreboard.game_over()
+        game_on = False
 
 screen.exitonclick()

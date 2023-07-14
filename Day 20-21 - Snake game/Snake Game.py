@@ -1,14 +1,12 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 import time
 
-x = 600
-y = 600
 
 screen = Screen()
-screen.setup(width=x, height=y)
+screen.setup(600, 600)
 screen.bgcolor("black")
 screen.title("The Best Snake Game")
 screen.tracer(0)

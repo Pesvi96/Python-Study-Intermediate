@@ -6,7 +6,7 @@ FONT = ("Courier", 50, "normal")
 
 class Artist(Turtle):
 
-    def __init__(self):
+    def __init__(self):     # Invisible white chuvak
         super().__init__()
         self.color("white")
         self.ht()

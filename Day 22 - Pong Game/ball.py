@@ -1,5 +1,6 @@
 from turtle import Turtle
 from random import choice
+import time
 
 MOVE_DISTANCE = 20
 
@@ -19,9 +20,11 @@ class Ball(Turtle):
         self.y_heading = 0
 
     def spawn(self):
-        self.goto(0, 0)
+        self.clear()
+        self.home()
         self.x_heading = choice([LEFT, RIGHT])
         self.y_heading = choice([UP, DOWN])
+
 
     def move(self):
         self.setheading(self.x_heading)
@@ -37,16 +40,23 @@ class Ball(Turtle):
             self.y_heading = UP
         print(f"ball {self.ycor()}")
         print(f"player {p1}")
-        if self.xcor() >= 320 and self.xcor() <= 350 and self.ycor() <= p1 and self.ycor() >= p1 - 100:
+        if 540 <= self.xcor() <= 560 and p2 >= self.ycor() >= (p2 - 100):
             # if ball is in the paddle vertical zone
             # and in proximity of first paddle turtle or -100s
             print("what")
-            self.x_heading = RIGHT
-        if self.xcor() <= -320 and self.xcor() >= -350 and self.ycor() <= p2 and self.ycor() >= p2 - 100:
             self.x_heading = LEFT
+        if -560 <= self.xcor() <= -540 and p1 >= self.ycor() >= (p1 - 100):
+            self.x_heading = RIGHT
             print("what")
-        if int(self.xcor()) <= -390 and int(self.xcor()) >= 390:
+        if int(self.xcor()) <= -600:
+            self.clear()
             self.spawn()
             print("\n\n\t spawning\n\n")
+            return "player1"
+        if int(self.xcor()) >= 600:
+            self.clear()
+            self.spawn()
+            print("\n\n\t spawning\n\n")
+            return "player2"
 
 

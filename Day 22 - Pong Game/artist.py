@@ -28,6 +28,7 @@ class Artist(Turtle):
         self.home()
         self.write(f"Game over, the score was {player_one} : {player_two}",
                    align=ALIGNMENT, font=("Courier", 25, "normal"))
+        self.hideturtle()
 
 
 class Scoreboard(Artist):
@@ -35,6 +36,7 @@ class Scoreboard(Artist):
     def __init__(self, x):
         super().__init__()
         self.goto(x, 240)
+        self.ht()
         self.score = 0
         self.write_score()
 

@@ -9,6 +9,7 @@ class Artist(Turtle):
     def __init__(self):     # Invisible white chuvak
         super().__init__()
         self.color("white")
+        self.shape("square")
         self.ht()
         self.penup()
 

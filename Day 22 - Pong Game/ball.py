@@ -25,44 +25,42 @@ class Ball(Turtle):
         self.x_heading = choice([LEFT, RIGHT])
         self.y_heading = choice([UP, DOWN])
 
-
+    #       Could have just written self.goto(current_x, delta_x)
+    #       and then delta_x will change the sign from time to time
     def move(self):
         self.setheading(self.x_heading)
         self.forward(20)
         self.setheading(self.y_heading)
         self.forward(20)
 
-    def ball_game(self, p1, p2):
+    #       Could have made this code much more readable by
+    #       making separate functions for bounce events, but then you'd have
+    #       to change the move function
+    def ball_game(self, p1, p2, p1_score, p2_score):
         p1_cor = p1.ycor()
         p2_cor = p2.ycor()
         self.move()
         if self.ycor() >= 280:
             self.y_heading = DOWN
-        if self.ycor() <= -280:
+        elif self.ycor() <= -280:
             self.y_heading = UP
-        print(f"ball {self.ycor()}")
-        print(f"player {p1}")
-        if 530 <= self.xcor() <= 560 and p2_cor >= self.ycor() >= (p2_cor - 100):
+        if 530 <= self.xcor() <= 560 and p2_cor+50 >= self.ycor() >= (p2_cor - 50):
             # if ball is in the paddle vertical zone
             # and in proximity of first paddle turtle or -100s
-            print("what")
             self.x_heading = LEFT
-        elif -560 <= self.xcor() <= -530 and p1_cor >= self.ycor() >= (p1_cor - 100):
+        elif -560 <= self.xcor() <= -530 and p1_cor+50 >= self.ycor() >= (p1_cor - 50):
             self.x_heading = RIGHT
-            print("what")
         elif int(self.xcor()) <= -620:
             self.clear()
             self.spawn()
-            print("\n\n\t spawning\n\n")
-            p1.add_score()
+            p2_score.add_score()
         elif int(self.xcor()) >= 620:
             self.clear()
             self.spawn()
-            print("\n\n\t spawning\n\n")
-            p2.add_score()
+            p1_score.add_score()
 
-
-        # Ball Dev tools
+    #   ---------------------------------------
+    #   Ball Dev tools
     #
     # def up(self):
     #     self.setheading(UP)
@@ -82,4 +80,3 @@ class Ball(Turtle):
     #
     # def ball_loc(self):
     #     print(self.position())
-

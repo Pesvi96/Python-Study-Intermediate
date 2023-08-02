@@ -6,7 +6,7 @@ FONT = ("Courier", 50, "normal")
 
 class Artist(Turtle):
 
-    def __init__(self):     # Invisible white chuvak
+    def __init__(self):  # Invisible white chuvak
         super().__init__()
         self.color("white")
         self.shape("square")
@@ -22,7 +22,6 @@ class Artist(Turtle):
             self.forward(40)
             self.penup()
             self.forward(80)
-
 
     @staticmethod
     def show_grids():
@@ -54,7 +53,6 @@ class Artist(Turtle):
             grid.setheading(90)
             grid.forward(20)
 
-
     def game_over(self, player_one, player_two):
         self.clear()
         self.home()
@@ -63,8 +61,12 @@ class Artist(Turtle):
         self.hideturtle()
 
 
+#       You could have made one instance of Scoreboard,
+#       which would have two attributes: player1_score and player2_score.
+#       Then methods would change those attributes
 class Scoreboard(Artist):
     score_position = 50
+
     def __init__(self, x):
         super().__init__()
         self.goto(Scoreboard.score_position * x, 240)
@@ -79,5 +81,3 @@ class Scoreboard(Artist):
     def write_score(self):
         self.clear()
         self.write(f"{self.score}", align=ALIGNMENT, font=FONT)
-
-

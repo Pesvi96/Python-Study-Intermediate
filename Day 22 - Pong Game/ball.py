@@ -33,6 +33,8 @@ class Ball(Turtle):
         self.forward(20)
 
     def ball_game(self, p1, p2):
+        p1_cor = p1.ycor()
+        p2_cor = p2.ycor()
         self.move()
         if self.ycor() >= 280:
             self.y_heading = DOWN
@@ -40,23 +42,44 @@ class Ball(Turtle):
             self.y_heading = UP
         print(f"ball {self.ycor()}")
         print(f"player {p1}")
-        if 540 <= self.xcor() <= 560 and p2 >= self.ycor() >= (p2 - 100):
+        if 530 <= self.xcor() <= 560 and p2_cor >= self.ycor() >= (p2_cor - 100):
             # if ball is in the paddle vertical zone
             # and in proximity of first paddle turtle or -100s
             print("what")
             self.x_heading = LEFT
-        if -560 <= self.xcor() <= -540 and p1 >= self.ycor() >= (p1 - 100):
+        elif -560 <= self.xcor() <= -530 and p1_cor >= self.ycor() >= (p1_cor - 100):
             self.x_heading = RIGHT
             print("what")
-        if int(self.xcor()) <= -600:
+        elif int(self.xcor()) <= -620:
             self.clear()
             self.spawn()
             print("\n\n\t spawning\n\n")
-            return "player1"
-        if int(self.xcor()) >= 600:
+            p1.add_score()
+        elif int(self.xcor()) >= 620:
             self.clear()
             self.spawn()
             print("\n\n\t spawning\n\n")
-            return "player2"
+            p2.add_score()
 
+
+        # Ball Dev tools
+    #
+    # def up(self):
+    #     self.setheading(UP)
+    #     self.forward(20)
+    #
+    # def down(self):
+    #     self.setheading(DOWN)
+    #     self.forward(20)
+    #
+    # def go_left(self):
+    #     self.setheading(LEFT)
+    #     self.forward(20)
+    #
+    # def go_right(self):
+    #     self.setheading(RIGHT)
+    #     self.forward(20)
+    #
+    # def ball_loc(self):
+    #     print(self.position())
 

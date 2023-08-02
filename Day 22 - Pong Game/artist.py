@@ -23,6 +23,38 @@ class Artist(Turtle):
             self.penup()
             self.forward(80)
 
+
+    @staticmethod
+    def show_grids():
+        grid = Turtle()
+        grid.penup()
+        grid.goto(-600, -300)
+        grid.color("red")
+        grid.ht()
+        grid.pendown()
+
+        # x coordinates
+        for _ in range(15):
+            grid.setheading(90)
+            grid.forward(600)
+            grid.setheading(0)
+            grid.forward(20)
+            grid.setheading(270)
+            grid.forward(600)
+            grid.setheading(0)
+            grid.forward(20)
+
+        for _ in range(15):
+            grid.setheading(180)
+            grid.forward(600)
+            grid.setheading(90)
+            grid.forward(20)
+            grid.setheading(0)
+            grid.forward(600)
+            grid.setheading(90)
+            grid.forward(20)
+
+
     def game_over(self, player_one, player_two):
         self.clear()
         self.home()
@@ -32,10 +64,10 @@ class Artist(Turtle):
 
 
 class Scoreboard(Artist):
-
+    score_position = 50
     def __init__(self, x):
         super().__init__()
-        self.goto(x, 240)
+        self.goto(Scoreboard.score_position * x, 240)
         self.ht()
         self.score = 0
         self.write_score()
@@ -47,4 +79,5 @@ class Scoreboard(Artist):
     def write_score(self):
         self.clear()
         self.write(f"{self.score}", align=ALIGNMENT, font=FONT)
+
 

@@ -24,5 +24,6 @@ class Car(Turtle):
         self.car_list.append(car)
 
 
-    def move_car(self, car):
+    @staticmethod
+    def move_car(car):
         car.forward(10)

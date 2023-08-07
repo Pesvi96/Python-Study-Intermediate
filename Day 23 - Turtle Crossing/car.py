@@ -12,13 +12,15 @@ class Car(Turtle):
         self.color((random(), random(), random()))
         self.shapesize(stretch_wid=1, stretch_len=2)
         self.penup()
+        self.hideturtle()
         self.car_list = []
 
     def create_traffic(self):
         car = Car()
-        car.goto(260, 275 - (50 * randint(1, 9)))
+        car.showturtle()
+        car.goto(320, 275 - (50 * randint(1, 9)))
         car.setheading(180)
-        print("car created")
+        # print("car created")
         self.car_list.append(car)
 
 

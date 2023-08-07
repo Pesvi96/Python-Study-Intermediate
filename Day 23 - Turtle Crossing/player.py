@@ -16,7 +16,6 @@ class Player(Turtle):
     def move(self):
         self.forward(10)
 
-    # TODO: Somehow the distance part is not working and the whole collision is fucked
     def check_collision(self, car):
         player_ycor = self.ycor()
         car_ycor = car.ycor()

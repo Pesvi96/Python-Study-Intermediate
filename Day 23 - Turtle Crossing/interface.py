@@ -44,5 +44,3 @@ class Artist(Turtle):
         self.undo()
         self.level += 1
         self.write_level()
-
-# Todo 2: Create Level function (separate instance)

@@ -2,10 +2,7 @@ from turtle import Turtle
 from random import random, randint
 
 
-
 class Car(Turtle):
-    car_starting_position = (310, 275 - (50 * randint(1, 8)))
-
     def __init__(self):
         super().__init__()
         self.shape("square")
@@ -22,7 +19,6 @@ class Car(Turtle):
         car.setheading(180)
         # print("car created")
         self.car_list.append(car)
-
 
     @staticmethod
     def move_car(car):

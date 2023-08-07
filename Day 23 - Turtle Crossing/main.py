@@ -4,8 +4,6 @@ from car import Car
 from interface import Artist
 import time
 
-
-
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.title("YOU SHALL NOT PASS!")
@@ -20,14 +18,11 @@ interface = Artist()
 
 screen.onkeypress(player.move, "Up")
 
-
 game_on = True
-
 
 car_object = Car()
 timer = 0
 speed = 0.1
-
 
 while game_on:
     time.sleep(speed)
@@ -45,6 +40,5 @@ while game_on:
         player.spawn()
         interface.add_level()
         speed *= 0.7
-
 
 screen.exitonclick()

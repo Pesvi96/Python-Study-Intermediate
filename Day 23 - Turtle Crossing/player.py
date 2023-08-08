@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+STARTING_POSITION = (0, -260)
+FINISH_LINE = 300
 
 class Player(Turtle):
     def __init__(self):
@@ -10,7 +12,7 @@ class Player(Turtle):
         self.spawn()
 
     def spawn(self):
-        self.goto(0, -260)
+        self.goto(STARTING_POSITION)
         self.setheading(90)
 
     def move(self):
@@ -33,7 +35,7 @@ class Player(Turtle):
 
     def check_win(self):
         player_ycor = self.ycor()
-        if player_ycor >= 300:
+        if player_ycor >= FINISH_LINE:
             return True
         else:
             return False

@@ -24,6 +24,14 @@ class Snake:
         tail_part.goto(position)
         self.snake.append(tail_part)
 
+    def respawn(self):
+        for x in self.snake:
+            x.goto(1000, 1000)
+        self.snake.clear()
+        for position in STARTING_POSITIONS:
+            self.create_snake(position)
+        self.head = self.snake[0]
+
     def move(self):
         for tail_part in range(len(self.snake) - 1, 0, -1):
             next_loc = self.snake[tail_part - 1].pos()

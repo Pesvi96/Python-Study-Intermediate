@@ -41,13 +41,27 @@ from functions import *
 if __name__ == "__main__":
     screen, apostle = initialize()
     my_dict = get_data()
+    data = pd.read_csv("50_states.csv")
+    guessed = []
 
-    count = 0
-    while count < 50:
-        guess = screen.textinput(f"{count}/50 States Guessed", "Please input the State name").capitalize()
-        if guess in my_dict.keys():
+    while len(guessed) < 50:
+        guess = screen.textinput(f"{len(guessed)}/50 States Guessed", "Please input the State name").title()
+        if guess == "Exit":
+            break
+        if guess in my_dict.keys() and guess not in guessed:
             print("Guessed correctly")
             apostle.write_state(guess, my_dict[guess])
-            count += 1
+            guessed.append(guess)
+
+
+    remained_states = data.state.tolist()
+    for state in guessed:
+        remained_states.remove(state)
+    print(remained_states)
+    csv = pd.DataFrame(remained_states)
+    csv.to_csv("Guessed_list.csv")
+    screen.exitonclick()
 
     screen.exitonclick()
+
+

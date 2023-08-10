@@ -1,6 +1,6 @@
 from turtle import Screen
 from apostle import Apostle
-import pandas
+import pandas as pd
 
 
 def initialize():
@@ -14,16 +14,14 @@ def initialize():
 
 def get_data():
     my_dict = {}
-    data = pandas.read_csv("50_states.csv")
+    data = pd.read_csv("50_states.csv")
 
-    names = data["state"].tolist()
-    for name in names:
-        state = data[data["state"] == name]
-        x_cor = state.x
-        y_cor = state.y
-        my_dict.update({name: [x_cor, y_cor]})
+    for name in data.state:
+        print(name)
+        x_cor = data[data.state == name].x.iloc[0]
+        y_cor = data[data.state == name].y.iloc[0]
+        my_dict.update({name.capitalize(): [x_cor, y_cor]})
+
     print(my_dict)
     return my_dict
 
-
-# TODO: შეცვალე ისე რომ State-ბში იპოვოს შტატი, და ამ შტატის row-დან მერე აიღოს data.x და data.y

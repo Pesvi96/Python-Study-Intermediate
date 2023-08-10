@@ -21,10 +21,13 @@ if __name__ == "__main__":
             guessed.append(guess)
 
 
-    remained_states = data.state.tolist()
-    for state in guessed:
-        remained_states.remove(state)
-    print(remained_states)
+
+    remained_states = [n for n in data.state.tolist() if n not in guessed]
+    # Much easier, list comprehension way 👆
+    # remained_states = data.state.tolist()
+    # for state in guessed:
+    #     remained_states.remove(state)
+    # print(remained_states)
     csv = pd.DataFrame(remained_states)
     csv.to_csv("Guessed_list.csv")
     screen.exitonclick()

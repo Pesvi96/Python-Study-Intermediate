@@ -46,7 +46,7 @@ def create_ui():
     pass_label = Label(text="Password:", fg=BLACK, bg=BACKGROUND)
     pass_label.place(x=59, y=260)
 
-    web_input = Entry(bg=WHITE, fg=BLACK, highlightthickness=0, width=33, insertbackground=BLACK, exportselection=True)
+    web_input = Entry(bg=WHITE, fg=BLACK, highlightthickness=0, width=33, insertbackground=BLACK, exportselection=True)     # TODO: რაცხა არ მუშაობს
     web_input.place(x=160, y=200)
 
     email_input = Entry(bg=WHITE, fg=BLACK, highlightthickness=0, width=33, insertbackground=BLACK)

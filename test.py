@@ -1,4 +1,9 @@
-numb = 9
-if 0 <= numb <= 9:
-    numb = f"0{numb}"
-    print(numb)
+import string
+
+
+
+symbols = "~`! @#$%^&*()_-+={[}]|\:;'<,>.?/" + '"' + "'"
+print(symbols)
+symbols_list = list(symbols)
+# symbols_list = symbols.split()
+print(symbols_list)

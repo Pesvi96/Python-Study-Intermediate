@@ -62,6 +62,3 @@ if __name__ == "__main__":
     csv.to_csv("Guessed_list.csv")
     screen.exitonclick()
 
-    screen.exitonclick()
-
-

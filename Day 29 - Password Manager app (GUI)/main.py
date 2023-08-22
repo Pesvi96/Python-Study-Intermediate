@@ -2,7 +2,6 @@ import tkinter.messagebox
 from tkinter import *
 from symbols import source
 from random import choice, randint, shuffle
-import panda as pd
 
 """
     input fields:
@@ -22,9 +21,8 @@ popups - confirmation popup ✅
 
 """
 
-# TODO: Write into file left, it's not working for now
 
-def generate_pass():
+def generate_pass():        # TODO: Use list apprehension
     password = []
     PASSWORD_LETTERS = 10
     limit = len(source) - 1
@@ -60,6 +58,19 @@ def copy_pass():
     print("I think it's copied")
 
 
+def save_info(web, mail, password):
+    print(web)
+    print(mail)
+    print(password)
+    web_input.delete(0, END)
+    email_input.delete(0, END)
+    pass_input.delete(0, END)
+    with open(f"./info", mode="a") as file:
+        print("writing into file")
+        file.write(f"{web} | {mail} | {password}\n")
+        print("Done, at least I think so")
+
+
 def add():
     web = web_input.get()
     mail = email_input.get()
@@ -71,18 +82,12 @@ def add():
         message_popup = tkinter.messagebox.askokcancel(title="Confirmation",
                                                        message="Are you sure you want to add this info?",
                                                        icon="question")
-    print(f"Popup answer: {message_popup}")
+        print(f"Popup answer: {message_popup}")
+        if message_popup == True:
+            save_info(web, mail, password)
 
-    if message_popup == True:
-        print(web)
-        print(mail)
-        print(password)
-        web_input.delete(0, 20)
-        email_input.delete(0, 20)
-        pass_input.delete(0, 20)
-        with open(f"./info", mode="r+") as file:
-            print("writing into file")
-            file.write(f"{web}: {mail}, {password}\n")
+
+
 
 
 def create_ui():
@@ -112,8 +117,9 @@ def create_ui():
     pass_label.place(x=59, y=260)
 
     web_input = Entry(bg=WHITE, fg=BLACK, highlightthickness=0, width=33, insertbackground=BLACK,
-                      exportselection=True)  # TODO: რაცხა არ მუშაობს
+                      exportselection=True)
     web_input.place(x=160, y=200)
+    web_input.focus()
 
     email_input = Entry(bg=WHITE, fg=BLACK, highlightthickness=0, width=33, insertbackground=BLACK)
     email_input.place(x=160, y=230)
@@ -134,7 +140,7 @@ def create_ui():
     canvas.place(x=180, y=0)
 
     return window, web_label, email_label, pass_label, web_input, email_input, \
-        pass_input, generate_btn, add_btn, canvas, logo
+        pass_input, generate_btn, add_btn, canvas, logo # Could have separated creation of widgets into categories as well, for example create buttons and create labels
 
 
 window, web_label, email_label, pass_label, web_input, \
